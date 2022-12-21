@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package monedas;
+
+message ValorDia {
+  string fecha = 1;
+  float  valor = 2;
+}
+
+message MonedaRequest {
+  string moneda = 1;
+  string fecha_incio = 2;
+  string fecha_termino = 3;
+}
+
+message MonedaResponse {
+  string moneda = 1;
+  repeated ValorDia valores = 2;
+}
+
+service PreciosMonedas {
+  rpc Query(MonedaRequest) returns (MonedaResponse);
+}
